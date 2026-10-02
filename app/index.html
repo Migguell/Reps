@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>REPS — Opening Countdown</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Chakra+Petch:ital,wght@1,600;1,700&amp;display=swap">
+<link rel="stylesheet" href="./assets/css/style.css">
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./vendor/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Chakra+Petch:ital,wght@1,600;1,700&amp;display=swap">
+<link rel="stylesheet" href="./assets/css/style.css">
+</helmet>
+
+<div class="reps-stage" onMouseMove="{{onMove}}" onMouseLeave="{{onLeave}}" onTouchMove="{{onMove}}" onTouchEnd="{{onLeave}}">
+
+<div class="reps-beams-rig" style="position: absolute; left: 0; right: 0; top: 0; height: 85%; overflow: hidden; pointer-events: none;">
+<div style="position: absolute; inset: 0; transform-origin: 50% 0%; transform: rotate({{rigTilt}}); transition: transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1);">
+<div class="beam bm1" style="left: 5%; background: {{beamBlue}};"></div>
+<div class="beam bm2" style="left: 17%; background: {{beamMagenta}};"></div>
+<div class="beam bm3" style="left: 25%; background: {{beamRed}};"></div>
+<div class="beam bm4" style="left: 37%; background: {{beamPurple}};"></div>
+<div class="beam bm5" style="left: 53%; background: {{beamBlue}};"></div>
+<div class="beam bm6" style="left: 65%; background: {{beamMagenta}};"></div>
+<div class="beam bm7" style="left: 78%; background: {{beamPurple}};"></div>
+<div class="beam bm8" style="left: 90%; background: {{beamRed}};"></div>
+</div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 170px; background: linear-gradient(180deg, rgba(8,7,16,0) 0%, rgba(8,7,16,0.72) 58%, rgba(8,7,16,1) 100%);"></div>
+</div>
+
+<div style="position: absolute; inset: 0; transform: translate3d({{parA}}, 0, 0); transition: transform 700ms ease-out; pointer-events: none;">
+<div class="haze" style="position: absolute; left: 50%; top: -300px; width: 1700px; height: 980px; margin-left: -850px; background: radial-gradient(ellipse at 50% 28%, {{glowBlue}}, rgba(8,7,16,0) 64%); mix-blend-mode: screen;"></div>
+</div>
+<div style="position: absolute; inset: 0; transform: translate3d({{parB}}, 0, 0); transition: transform 860ms ease-out; pointer-events: none;">
+<div class="haze2" style="position: absolute; left: 50%; top: -170px; width: 1300px; height: 880px; margin-left: -650px; background: radial-gradient(ellipse at 50% 30%, {{glowMagenta}}, rgba(8,7,16,0) 60%); mix-blend-mode: screen;"></div>
+</div>
+<div style="position: absolute; inset: 0; transform: translate3d({{parC}}, 0, 0); transition: transform 1040ms ease-out; pointer-events: none;">
+<div class="haze3" style="position: absolute; left: 50%; top: -220px; width: 1000px; height: 860px; margin-left: -500px; background: radial-gradient(ellipse at 50% 34%, {{glowPurple}}, rgba(8,7,16,0) 58%); mix-blend-mode: screen;"></div>
+</div>
+
+<div style="position: absolute; left: {{spotLeft}}; top: {{spotTop}}; width: 820px; height: 820px; margin-left: -410px; margin-top: -410px; background: radial-gradient(circle at 50% 50%, rgba(245,243,250,0.12) 0%, {{spotCore}} 24%, rgba(8,7,16,0) 62%); mix-blend-mode: screen; opacity: {{spotOn}}; transition: opacity 600ms ease, left 200ms ease-out, top 200ms ease-out; pointer-events: none;"></div>
+
+<div class="spill" style="position: absolute; left: 50%; bottom: -190px; width: 1700px; height: 460px; margin-left: -850px; background: radial-gradient(ellipse at 50% 50%, {{glowMagenta}}, rgba(8,7,16,0) 66%); mix-blend-mode: screen; pointer-events: none;"></div>
+
+<div style="position: absolute; left: 50%; top: 234px; width: 1360px; height: 450px; margin-left: -680px; margin-top: -225px; background: radial-gradient(ellipse at 50% 50%, rgba(8,7,16,0.94) 0%, rgba(8,7,16,0.86) 34%, rgba(8,7,16,0.45) 60%, rgba(8,7,16,0) 78%); pointer-events: none;"></div>
+
+<div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(245,243,250,0.05) 1px, rgba(0,0,0,0) 1px); background-size: 3px 3px; pointer-events: none;"></div>
+<div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(to bottom, rgba(245,243,250,0.035) 0px, rgba(245,243,250,0.035) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0) 5px); pointer-events: none;"></div>
+
+<div class="beat" style="position: absolute; inset: 0; background: linear-gradient(180deg, {{glowMagenta}} 0%, rgba(8,7,16,0) 58%); mix-blend-mode: screen; pointer-events: none;"></div>
+<div class="bar" style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, {{glowBlue}} 0%, rgba(8,7,16,0) 64%); mix-blend-mode: screen; pointer-events: none;"></div>
+
+<div class="reps-content">
+
+<div class="reps-status-notice" style="display: {{statusNoticeDisplay}}; border: 1px solid {{statusNoticeColor}}; background: rgba(8, 7, 16, 0.95); box-shadow: 0 0 24px {{statusNoticeColor}}33;">
+<span style="color: {{statusNoticeColor}}; font-weight: 600; font-size: 11px; letter-spacing: 0.2em;">{{statusNoticeText}}</span>
+<button type="button" onClick="{{onDismissNotice}}" style="background: none; border: none; color: #ABA6BC; cursor: pointer; font-size: 14px; padding: 4px 8px;">✕</button>
+</div>
+
+<div class="reps-header">
+<img src="./assets/logo-reps.png" alt="REPS" class="reps-header-logo">
+<div class="reps-header-locations">
+<span>AL SAFARAT</span>
+<span>DIPLOMATIC QUARTER</span>
+<span>RIYADH</span>
+</div>
+</div>
+
+<div class="reps-hero">
+<div class="reps-hero-date" style="color: {{lightBlue}};">OPENING 15 DECEMBER 2026</div>
+<img src="./assets/logo-reps.png" alt="REPS" class="reps-hero-logo" style="filter: drop-shadow(0 0 56px {{glowBlue}}) drop-shadow(0 0 112px {{glowMagenta}});">
+<div class="reps-hero-taglines">
+<div class="reps-hero-subtitle">60 MINUTES · HIIT · MIXED</div>
+<div class="reps-hero-headline">MAKE IT COUNT.</div>
+</div>
+</div>
+
+<div class="reps-spacer"></div>
+
+<div class="reps-columns">
+
+<div class="reps-col reps-col-left">
+
+<div class="reps-status">
+<span class="tick" style="width: 6px; height: 6px; border-radius: 50%; background: {{accent}}; display: inline-block;"></span>
+<span class="reps-status-text">DOORS OPEN IN</span>
+</div>
+
+<div class="countdown-grid">
+
+<div class="countdown-card" style="border: 1px solid {{blueLine}}; background: linear-gradient(180deg, {{blueWash}}, rgba(245,243,250,0));">
+<div class="countdown-num">{{days}}</div>
+<div class="countdown-label">DAYS</div>
+</div>
+
+<div class="countdown-card" style="border: 1px solid {{purpleLine}}; background: linear-gradient(180deg, {{purpleWash}}, rgba(245,243,250,0));">
+<div class="countdown-num">{{hours}}</div>
+<div class="countdown-label">HOURS</div>
+</div>
+
+<div class="countdown-card" style="border: 1px solid {{magentaLine}}; background: linear-gradient(180deg, {{magentaWash}}, rgba(245,243,250,0));">
+<div class="countdown-num">{{mins}}</div>
+<div class="countdown-label">MINUTES</div>
+</div>
+
+<div class="countdown-card" style="border: 1px solid {{accentLine}}; background: linear-gradient(180deg, {{accentWash}}, rgba(245,243,250,0));">
+<div class="countdown-num" style="color: {{accent}};">{{secs}}</div>
+<div class="countdown-label">SECONDS</div>
+</div>
+
+</div>
+
+<div class="reps-event-meta">TUESDAY 15 DECEMBER 2026 · 18:00 AST · 1364 CENTER, AL SAFARAT</div>
+
+<form class="email-form" onSubmit="{{onSubmitLead}}">
+<label for="email" class="sr-only">Email address</label>
+<input id="email" type="email" placeholder="your@email.com" class="email-input">
+<button type="submit" class="email-btn {{emailBtnClass}}" style="background: {{accent}};">{{sendButtonText}}</button>
+</form>
+
+<div class="reps-form-note">Founding memberships open 30 days before opening. List members get first access.</div>
+
+</div>
+
+<div class="reps-col reps-col-right">
+
+<div class="bundles-header">
+<div class="bundles-kicker" style="color: {{lightMagenta}};">FOUNDING MEMBER BUNDLES</div>
+<h2 class="bundles-title">BUY YOUR CLASSES BEFORE WE OPEN.</h2>
+</div>
+
+<div class="bundles-grid">
+
+<div class="bundle-card" style="border: 1px solid {{blueLine}}; background: linear-gradient(180deg, {{blueWash}}, rgba(245,243,250,0.01));">
+<div class="bundle-top">
+<div class="bundle-name">FIVE</div>
+<div class="bundle-classes">5 CLASSES</div>
+</div>
+<div class="bundle-price-row">
+<div class="bundle-price">{{priceFive}}</div>
+<div class="bundle-orig-price">750</div>
+</div>
+<div class="bundle-per-class" style="color: {{lightBlue}};">{{priceFivePerClass}}</div>
+<div class="bundle-spacer"></div>
+<button type="button" class="bundle-btn bundle-btn-secondary" onClick="{{onBuyFive}}">{{buyFiveText}}</button>
+</div>
+
+<div class="bundle-card" style="border: 1px solid {{accentLine}}; background: linear-gradient(180deg, {{accentWash}}, rgba(245,243,250,0.01));">
+<div class="bundle-badge" style="background: {{accent}};">BEST VALUE</div>
+<div class="bundle-top">
+<div class="bundle-name">TEN</div>
+<div class="bundle-classes bundle-classes-ten">10 CLASSES</div>
+</div>
+<div class="bundle-price-row">
+<div class="bundle-price">{{priceTen}}</div>
+<div class="bundle-orig-price">1,400</div>
+</div>
+<div class="bundle-per-class" style="color: {{accent}};">{{priceTenPerClass}}</div>
+<div class="bundle-spacer"></div>
+<button type="button" class="bundle-btn bundle-btn-primary" style="background: {{accent}};" onClick="{{onBuyTen}}">{{buyTenText}}</button>
+</div>
+
+</div>
+
+<div class="bundles-disclaimer">Founding rate locked · Priority booking · Valid [X] months from opening day · [REFUND TERMS]</div>
+
+</div>
+
+</div>
+
+<div class="reps-spacer"></div>
+
+<div class="reps-footer">
+<span>NOTHING HAPPENS ONCE.</span>
+<span>REPS AND GRAMS COMPANY</span>
+</div>
+
+</div>
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script id="dc-script" data-props='{"accent":{"editor":"color","default":"#FF3A46","options":["#FF3A46","#396AFE","#8B3BFF","#C62BC6"],"section":"Theme"},"lightBlue":{"editor":"color","default":"#396AFE","options":["#396AFE","#8B3BFF","#C62BC6","#FF3A46"],"section":"Disco lights"},"lightMagenta":{"editor":"color","default":"#C62BC6","options":["#C62BC6","#8B3BFF","#396AFE","#FF3A46"],"section":"Disco lights"},"lightPurple":{"editor":"color","default":"#8B3BFF","options":["#8B3BFF","#C62BC6","#396AFE","#FF3A46"],"section":"Disco lights"},"lightRed":{"editor":"color","default":"#FF3A46","options":["#FF3A46","#C62BC6","#8B3BFF","#396AFE"],"section":"Disco lights"}}'></script>
+<script>
+(function() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', './assets/js/app.js', false);
+  xhr.send(null);
+  document.getElementById('dc-script').textContent = xhr.responseText;
+})();
+</script>
+</body>
+</html>
