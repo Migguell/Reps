@@ -1,6 +1,15 @@
-const API_BASE = typeof window !== 'undefined' && (window.location.port === '8000' || !window.location.port)
-  ? 'http://localhost:5000'
-  : '';
+const isLocalhost = typeof window !== 'undefined' && (
+  window.location.hostname === 'localhost' ||
+  window.location.hostname === '127.0.0.1' ||
+  window.location.hostname === '0.0.0.0'
+);
+
+const envApiUrl = (typeof window !== 'undefined' && window.__ENV__ && window.__ENV__.API_URL)
+  ? window.__ENV__.API_URL
+  : 'https://api.reps-fitness.com';
+
+const API_BASE = isLocalhost ? 'http://localhost:5000' : envApiUrl;
+
 
 class Component extends DCLogic {
   constructor(props) {
