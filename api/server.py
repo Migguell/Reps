@@ -1,6 +1,8 @@
 import logging
 import os
+import re
 import sys
+from typing import List, Union
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 if current_dir not in sys.path:
@@ -21,11 +23,30 @@ logging.basicConfig(
 logger = logging.getLogger("reps-api")
 
 
+def get_allowed_origins() -> List[Union[str, re.Pattern]]:
+    origins: List[Union[str, re.Pattern]] = [
+        "http://localhost:8000",
+        "http://127.0.0.1:8000",
+        "http://localhost:5000",
+        "http://localhost:3000",
+        "https://reps-fitness.com",
+        "https://www.reps-fitness.com",
+        re.compile(r"^https://.*\.vercel\.app$")
+    ]
+    cors_env = get_env("CORS_ORIGIN", "")
+    if cors_env:
+        for item in cors_env.split(","):
+            cleaned = item.strip()
+            if cleaned and cleaned not in origins:
+                origins.append(cleaned)
+    return origins
+
+
 def create_app() -> Flask:
     app = Flask(__name__)
 
-    cors_origin = get_env("CORS_ORIGIN", "http://localhost:8000")
-    CORS(app, resources={r"/api/*": {"origins": [cors_origin, "http://localhost:8000", "http://127.0.0.1:8000"]}})
+    allowed_origins = get_allowed_origins()
+    CORS(app, resources={r"/api/*": {"origins": allowed_origins}})
 
     @app.route("/health", methods=["GET"])
     def health():

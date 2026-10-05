@@ -105,8 +105,8 @@ def create_checkout_session(bundle: str) -> str:
                 "price": price_id,
                 "quantity": 1
             }],
-            success_url=f"{domain}/",
-            cancel_url=f"{domain}/",
+            success_url=f"{domain}/?status=success&session_id={{CHECKOUT_SESSION_ID}}",
+            cancel_url=f"{domain}/?status=cancelled",
             metadata={
                 "bundle": bundle_key,
                 "classes": 5 if bundle_key == "five" else 10
